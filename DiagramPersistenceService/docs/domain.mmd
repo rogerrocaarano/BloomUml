@@ -3,19 +3,21 @@
 
   class UmlDiagram {
     <<AggregateRootBase>>
-    - name: string
-    - version: number
+    Name: string
+    Version: DiagramVersion
   }
+  DiagramVersion --* UmlDiagram
+  UmlClass "*"--*"1" UmlDiagram
+  UmlClassRelation "*"--*"1" UmlDiagram
 
   class UmlClass {
     <<AggregateRootBase>>
-    - diagramId: string
-    - name: string
-    - attributes: UmlAttribute [*]
-    - methods: UmlMethod [*]
-    - position: UmlPosition
+    DiagramId: string
+    Name: string
+    Attributes: UmlAttribute [*]
+    Methods: UmlMethod [*]
+    Position: UmlPosition
   }
-  UmlClass "*"--"1" UmlDiagram: existe en
 
   UmlAttribute --* UmlClass
   UmlMethod --* UmlClass
@@ -24,84 +26,89 @@
 
   class UmlClassRelation {
     <<AggregateRootBase>>
-    - diagramId: string
-    - direction: RelationDirection
-    - type: UmlClassRelationType
-    - multiplicity: UmlMultiplicity [0..1]
+    DiagramId: string
+    Direction: UmlClassRelationDirection
+    Type: UmlClassRelationType
+    Multiplicity: UmlMultiplicity [0..1]
   }
-  UmlClassRelation "*"--"1" UmlDiagram: existe en
   UmlClassRelation "1"--"2" UmlClass: relaciona
 
   UmlClassRelationType --* UmlClassRelation
   UmlMultiplicity --* UmlClassRelation
-  RelationDirection --* UmlClassRelation
+  UmlClassRelationDirection --* UmlClassRelation
 
   class UmlPosition {
     <<IValueObject>>
-    - x: number
-    - y: number
+    X: int
+    Y: int
   }
 
   class UmlAttribute {
     <<EntityBase>>
-    - visibility: UmlVisibility
-    - variable: UmlVariable
+    Visibility: UmlVisibility
+    Variable: UmlVariable
   }
   UmlVariable --* UmlAttribute
   UmlVisibility --* UmlAttribute
 
   class UmlVisibility {
     <<IValueObject>>
-    - value: string
-    + Public
-    + Private
-    + Protected
-    + Package
+    Value: string
+    Public
+    Private
+    Protected
+    Package
   }
 
   class UmlVariable {
     <<IValueObject>>
-    - name: string
-    - type: string
+    Name: string
+    Type: string
   }
 
   class UmlMethod {
     <<EntityBase>>
-    - visibility: UmlVisibility
-    - name: string
-    - returnType: string
-    - parameters: UmlMethodParameter [*]
+    Visibility: UmlVisibility
+    Name: string
+    ReturnType: string
+    Parameters: UmlMethodParameter [*]
   }
   UmlMethodParameter --* UmlMethod
   UmlVisibility --* UmlMethod
 
   class UmlMethodParameter {
     <<EntityBase>>
-    - variable: UmlVariable
+    Variable: UmlVariable
   }
   UmlVariable --* UmlMethodParameter
 
 
   class UmlMultiplicity {
     <<IValueObject>>
-    - origin: number
-    - destination: number
+    Origin: int
+    Destination: int
   }
 
   class UmlClassRelationType {
     <<IValueObject>>
-    - type: string
-    + Inheritance
-    + Composition
-    + Aggregation
-    + Association
-    + Dependency
-    + Realization
+    Type: string
+    Inheritance
+    Composition
+    Aggregation
+    Association
+    Dependency
+    Realization
   }
 
-  class RelationDirection {
+  class UmlClassRelationDirection {
     <<IValueObject>>
-    - fromClassId: string
-    - toClassId: string
-    - bidirectional: boolean
+    FromClassId: string
+    ToClassId: string
+    Bidirectional: boolean
+  }
+
+  class DiagramVersion {
+    <<IValueObject>>
+    Version: int
+    VersioningDateTime: DateTime
   }
