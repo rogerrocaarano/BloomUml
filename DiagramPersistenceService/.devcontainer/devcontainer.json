@@ -1,0 +1,22 @@
+{
+    "dockerComposeFile": [
+        "docker-compose.yaml"
+    ],
+    "name": "dotNET",
+    "service": "devcontainer",
+    "workspaceFolder": "/workspace/DiagramPersistenceService",
+    "features": {
+        "ghcr.io/devcontainers/features/dotnet": {
+            "version": "9.0.306"
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-dotnettools.csdevkit",
+                "MermaidChart.vscode-mermaid-chart",
+                "esbenp.prettier-vscode"
+            ]
+        }
+    }
+}
