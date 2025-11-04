@@ -1,5 +1,5 @@
 ---
-applyTo: "src/Core/**/**.cs"
+applyTo: "**/Core/**/**.cs"
 ---
 
 # OPENDDD.net library usage instructions
