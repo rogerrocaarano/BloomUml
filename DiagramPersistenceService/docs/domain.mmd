@@ -1,0 +1,107 @@
+﻿classDiagram
+  direction BT
+
+  class UmlDiagram {
+    <<AggregateRootBase>>
+    - name: string
+    - version: number
+  }
+
+  class UmlClass {
+    <<AggregateRootBase>>
+    - diagramId: string
+    - name: string
+    - attributes: UmlAttribute [*]
+    - methods: UmlMethod [*]
+    - position: UmlPosition
+  }
+  UmlClass "*"--"1" UmlDiagram: existe en
+
+  UmlAttribute --* UmlClass
+  UmlMethod --* UmlClass
+  UmlPosition --* UmlClass
+
+
+  class UmlClassRelation {
+    <<AggregateRootBase>>
+    - diagramId: string
+    - direction: RelationDirection
+    - type: UmlClassRelationType
+    - multiplicity: UmlMultiplicity [0..1]
+  }
+  UmlClassRelation "*"--"1" UmlDiagram: existe en
+  UmlClassRelation "1"--"2" UmlClass: relaciona
+
+  UmlClassRelationType --* UmlClassRelation
+  UmlMultiplicity --* UmlClassRelation
+  RelationDirection --* UmlClassRelation
+
+  class UmlPosition {
+    <<IValueObject>>
+    - x: number
+    - y: number
+  }
+
+  class UmlAttribute {
+    <<EntityBase>>
+    - visibility: UmlVisibility
+    - variable: UmlVariable
+  }
+  UmlVariable --* UmlAttribute
+  UmlVisibility --* UmlAttribute
+
+  class UmlVisibility {
+    <<IValueObject>>
+    - value: string
+    + Public
+    + Private
+    + Protected
+    + Package
+  }
+
+  class UmlVariable {
+    <<IValueObject>>
+    - name: string
+    - type: string
+  }
+
+  class UmlMethod {
+    <<EntityBase>>
+    - visibility: UmlVisibility
+    - name: string
+    - returnType: string
+    - parameters: UmlMethodParameter [*]
+  }
+  UmlMethodParameter --* UmlMethod
+  UmlVisibility --* UmlMethod
+
+  class UmlMethodParameter {
+    <<EntityBase>>
+    - variable: UmlVariable
+  }
+  UmlVariable --* UmlMethodParameter
+
+
+  class UmlMultiplicity {
+    <<IValueObject>>
+    - origin: number
+    - destination: number
+  }
+
+  class UmlClassRelationType {
+    <<IValueObject>>
+    - type: string
+    + Inheritance
+    + Composition
+    + Aggregation
+    + Association
+    + Dependency
+    + Realization
+  }
+
+  class RelationDirection {
+    <<IValueObject>>
+    - fromClassId: string
+    - toClassId: string
+    - bidirectional: boolean
+  }
