@@ -16,7 +16,10 @@
                 "ms-dotnettools.csdevkit",
                 "MermaidChart.vscode-mermaid-chart",
                 "esbenp.prettier-vscode"
-            ]
+            ],
+            "settings": {
+                "csharp.preview.improvedLaunchExperience": false
+            }
         }
     }
 }
