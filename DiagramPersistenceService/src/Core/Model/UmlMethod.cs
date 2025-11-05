@@ -1,34 +1,36 @@
+using OpenDDD.Domain.Model.Base;
+
 namespace Core.Model;
 
-public class UmlMethod : IEntity<Guid>
+public class UmlMethod : EntityBase<Guid>
 {
-    public Guid Id { get; private set; }
     public UmlVisibility Visibility { get; private set; }
     public string Name { get; private set; }
     public string ReturnType { get; private set; }
-    public IReadOnlyCollection<UmlMethodParameter> Parameters => _parameters.AsReadOnly();
+    public ICollection<UmlMethodParameter> Parameters { get; private set; }
 
-    private readonly List<UmlMethodParameter> _parameters = new();
-
-    public UmlMethod(Guid id, UmlVisibility visibility, string name, string returnType, IEnumerable<UmlMethodParameter>? parameters = null)
+    private UmlMethod(
+        Guid id,
+        UmlVisibility visibility,
+        string name,
+        string returnType,
+        ICollection<UmlMethodParameter>? parameters = null
+    )
+        : base(id)
     {
-        Id = id;
         Visibility = visibility;
         Name = name;
         ReturnType = returnType;
-        if (parameters != null)
-        {
-            _parameters.AddRange(parameters);
-        }
+        Parameters = parameters ?? [];
     }
 
-    public void AddParameter(UmlMethodParameter parameter)
+    public static UmlMethod Create(
+        UmlVisibility visibility,
+        string name,
+        string returnType,
+        ICollection<UmlMethodParameter>? parameters = null
+    )
     {
-        _parameters.Add(parameter);
-    }
-
-    public void RemoveParameter(UmlMethodParameter parameter)
-    {
-        _parameters.Remove(parameter);
+        return new UmlMethod(Guid.NewGuid(), visibility, name, returnType, parameters);
     }
 }
