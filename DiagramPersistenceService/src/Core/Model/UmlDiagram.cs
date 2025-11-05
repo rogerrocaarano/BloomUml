@@ -42,7 +42,9 @@ public class UmlDiagram : AggregateRootBase<Guid>
         string name,
         DiagramVersion version,
         ICollection<Guid> classesIds,
-        ICollection<Guid> relationsIds) : base(id)
+        ICollection<Guid> relationsIds
+    )
+        : base(id)
     {
         Name = name;
         Version = version;
