@@ -1,7 +1,5 @@
 {
-    "dockerComposeFile": [
-        "docker-compose.yaml"
-    ],
+    "dockerComposeFile": ["docker-compose.yaml"],
     "name": "dotNET",
     "service": "devcontainer",
     "workspaceFolder": "/workspace/DiagramPersistenceService",
@@ -10,15 +8,25 @@
             "version": "9.0.306"
         }
     },
+    "postCreateCommand": "dotnet tool restore",
     "customizations": {
         "vscode": {
             "extensions": [
                 "ms-dotnettools.csdevkit",
                 "MermaidChart.vscode-mermaid-chart",
-                "esbenp.prettier-vscode"
+                "esbenp.prettier-vscode",
+                "csharpier.csharpier-vscode"
             ],
             "settings": {
-                "csharp.preview.improvedLaunchExperience": false
+                "csharp.preview.improvedLaunchExperience": false,
+                "editor.defaultFormatter": "esbenp.prettier-vscode",
+                "editor.formatOnSave": true,
+                "[csharp]": {
+                    "editor.defaultFormatter": "csharpier.csharpier-vscode"
+                },
+                "[xml]": {
+                    "editor.defaultFormatter": "csharpier.csharpier-vscode"
+                }
             }
         }
     }
