@@ -1,13 +1,19 @@
+using OpenDDD.Domain.Model.Base;
+
 namespace Core.Model;
 
-public class UmlMethodParameter : IEntity<Guid>
+public class UmlMethodParameter : EntityBase<Guid>
 {
-    public Guid Id { get; private set; }
     public UmlVariable Variable { get; private set; }
 
-    public UmlMethodParameter(Guid id, UmlVariable variable)
+    private UmlMethodParameter(Guid id, UmlVariable variable)
+        : base(id)
     {
-        Id = id;
         Variable = variable;
+    }
+
+    public static UmlMethodParameter Create(UmlVariable variable)
+    {
+        return new UmlMethodParameter(Guid.NewGuid(), variable);
     }
 }
