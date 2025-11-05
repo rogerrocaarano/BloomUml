@@ -1,8 +1,7 @@
 using System.Collections.Concurrent;
 using System.Linq.Expressions;
-using Core.Model;
 
-namespace Core.Services;
+namespace Core.Relations;
 
 public class UmlClassRelationsRepository : IRepository<UmlClassRelation, Guid>
 {
@@ -25,7 +24,10 @@ public class UmlClassRelationsRepository : IRepository<UmlClassRelation, Guid>
         return Task.FromResult(relation);
     }
 
-    public Task<IEnumerable<UmlClassRelation>> FindWithAsync(Expression<Func<UmlClassRelation, bool>> filterExpression, CancellationToken ct)
+    public Task<IEnumerable<UmlClassRelation>> FindWithAsync(
+        Expression<Func<UmlClassRelation, bool>> filterExpression,
+        CancellationToken ct
+    )
     {
         var compiledFilter = filterExpression.Compile();
         var filteredRelations = _relations.Values.Where(compiledFilter);
@@ -34,7 +36,9 @@ public class UmlClassRelationsRepository : IRepository<UmlClassRelation, Guid>
 
     public async Task<UmlClassRelation> GetAsync(Guid id, CancellationToken ct)
     {
-        var relation = await FindAsync(id, ct) ?? throw new KeyNotFoundException($"UmlClassRelation with id {id} not found");
+        var relation =
+            await FindAsync(id, ct)
+            ?? throw new KeyNotFoundException($"UmlClassRelation with id {id} not found");
         return relation;
     }
 

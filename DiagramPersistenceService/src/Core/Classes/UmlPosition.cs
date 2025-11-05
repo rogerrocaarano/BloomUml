@@ -1,4 +1,4 @@
-namespace Core.Model;
+namespace Core.Classes;
 
 /// <summary>
 /// Represents the position of a UML element in a diagram.

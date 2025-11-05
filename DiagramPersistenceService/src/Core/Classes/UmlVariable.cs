@@ -1,4 +1,4 @@
-namespace Core.Model;
+namespace Core.Classes;
 
 /// <summary>
 /// Represents a variable in a UML context, such as an attribute or parameter.

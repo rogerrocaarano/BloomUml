@@ -1,6 +1,6 @@
 using OpenDDD.Domain.Model.Base;
 
-namespace Core.Model;
+namespace Core.Relations;
 
 /// <summary>
 /// Represents a relation between UML classes in a diagram.

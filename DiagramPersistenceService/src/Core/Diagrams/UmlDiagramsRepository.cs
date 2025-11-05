@@ -1,8 +1,7 @@
 using System.Collections.Concurrent;
 using System.Linq.Expressions;
-using Core.Model;
 
-namespace Core.Services;
+namespace Core.Diagrams;
 
 public class UmlDiagramsRepository : IRepository<UmlDiagram, Guid>
 {
@@ -25,7 +24,10 @@ public class UmlDiagramsRepository : IRepository<UmlDiagram, Guid>
         return Task.FromResult(diagram);
     }
 
-    public Task<IEnumerable<UmlDiagram>> FindWithAsync(Expression<Func<UmlDiagram, bool>> filterExpression, CancellationToken ct)
+    public Task<IEnumerable<UmlDiagram>> FindWithAsync(
+        Expression<Func<UmlDiagram, bool>> filterExpression,
+        CancellationToken ct
+    )
     {
         var compiledFilter = filterExpression.Compile();
         var filteredDiagrams = _diagrams.Values.Where(compiledFilter);
@@ -34,7 +36,9 @@ public class UmlDiagramsRepository : IRepository<UmlDiagram, Guid>
 
     public async Task<UmlDiagram> GetAsync(Guid id, CancellationToken ct)
     {
-        var diagram = await FindAsync(id, ct) ?? throw new KeyNotFoundException($"Diagram with id {id} not found");
+        var diagram =
+            await FindAsync(id, ct)
+            ?? throw new KeyNotFoundException($"Diagram with id {id} not found");
         return diagram;
     }
 

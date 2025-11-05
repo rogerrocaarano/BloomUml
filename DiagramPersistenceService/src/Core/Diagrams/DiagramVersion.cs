@@ -1,4 +1,4 @@
-namespace Core.Model;
+namespace Core.Diagrams;
 
 /// <summary>
 /// Represents a version of a diagram, including the version number and the date/time it was versioned.

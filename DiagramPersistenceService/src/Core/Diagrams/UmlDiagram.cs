@@ -1,6 +1,6 @@
 using OpenDDD.Domain.Model.Base;
 
-namespace Core.Model;
+namespace Core.Diagrams;
 
 /// <summary>
 /// Represents a UML diagram as an aggregate root in the domain model.

@@ -1,4 +1,4 @@
-namespace Core.Model;
+namespace Core.Classes;
 
 /// <summary>
 /// Represents the visibility of a UML element.

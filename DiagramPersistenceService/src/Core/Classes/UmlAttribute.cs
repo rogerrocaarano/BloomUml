@@ -1,6 +1,6 @@
 using OpenDDD.Domain.Model.Base;
 
-namespace Core.Model;
+namespace Core.Classes;
 
 /// <summary>
 /// Represents an attribute of a UML class.

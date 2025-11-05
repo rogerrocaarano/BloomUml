@@ -1,8 +1,7 @@
 using System.Collections.Concurrent;
 using System.Linq.Expressions;
-using Core.Model;
 
-namespace Core.Services;
+namespace Core.Classes;
 
 public class UmlClassesRepository : IRepository<UmlClass, Guid>
 {
@@ -25,7 +24,10 @@ public class UmlClassesRepository : IRepository<UmlClass, Guid>
         return Task.FromResult(umlClass);
     }
 
-    public Task<IEnumerable<UmlClass>> FindWithAsync(Expression<Func<UmlClass, bool>> filterExpression, CancellationToken ct)
+    public Task<IEnumerable<UmlClass>> FindWithAsync(
+        Expression<Func<UmlClass, bool>> filterExpression,
+        CancellationToken ct
+    )
     {
         var compiledFilter = filterExpression.Compile();
         var filteredClasses = _classes.Values.Where(compiledFilter);
@@ -34,7 +36,9 @@ public class UmlClassesRepository : IRepository<UmlClass, Guid>
 
     public async Task<UmlClass> GetAsync(Guid id, CancellationToken ct)
     {
-        var umlClass = await FindAsync(id, ct) ?? throw new KeyNotFoundException($"UmlClass with id {id} not found");
+        var umlClass =
+            await FindAsync(id, ct)
+            ?? throw new KeyNotFoundException($"UmlClass with id {id} not found");
         return umlClass;
     }
 

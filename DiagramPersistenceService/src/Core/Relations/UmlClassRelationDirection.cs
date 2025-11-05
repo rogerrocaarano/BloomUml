@@ -1,4 +1,4 @@
-namespace Core.Model;
+namespace Core.Relations;
 
 /// <summary>
 /// Represents the direction of a relation between UML classes.
