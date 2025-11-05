@@ -1,17 +1,21 @@
+using OpenDDD.Domain.Model.Base;
+
 namespace Core.Model;
 
-public class UmlAttribute : IEntity<Guid>
+public class UmlAttribute : EntityBase<Guid>
 {
-    public Guid Id { get; private set; }
     public UmlVisibility Visibility { get; private set; }
     public UmlVariable Variable { get; private set; }
 
-    public UmlAttribute(Guid id, UmlVisibility visibility, UmlVariable variable)
+    private UmlAttribute(Guid id, UmlVisibility visibility, UmlVariable variable)
+        : base(id)
     {
-        Id = id;
         Visibility = visibility;
         Variable = variable;
     }
 
-    // Add methods for business logic if needed
+    public static UmlAttribute Create(UmlVisibility visibility, UmlVariable variable)
+    {
+        return new UmlAttribute(Guid.NewGuid(), visibility, variable);
+    }
 }
