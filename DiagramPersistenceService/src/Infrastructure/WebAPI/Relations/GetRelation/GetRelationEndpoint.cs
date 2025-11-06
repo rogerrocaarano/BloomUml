@@ -4,7 +4,7 @@ using FastEndpoints;
 
 namespace DiagramPersistenceServiceApi.Infrastructure.WebAPI.Relations.GetRelation;
 
-public class GetRelationEndpoint : Endpoint<EmptyRequest, GetRelationDto.Response>
+public class GetRelationEndpoint : EndpointWithoutRequest<GetRelationDto.Response>
 {
     public required GetRelationAction GetRelationAction { get; set; }
 
@@ -15,7 +15,7 @@ public class GetRelationEndpoint : Endpoint<EmptyRequest, GetRelationDto.Respons
         AllowAnonymous();
     }
 
-    public override async Task HandleAsync(EmptyRequest req, CancellationToken ct)
+    public override async Task HandleAsync(CancellationToken ct)
     {
         var relationId = Route<Guid>("RelationId");
         var command = new GetRelationCommand(relationId);

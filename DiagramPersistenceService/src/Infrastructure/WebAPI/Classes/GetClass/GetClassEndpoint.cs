@@ -4,7 +4,7 @@ using FastEndpoints;
 
 namespace DiagramPersistenceServiceApi.Infrastructure.WebAPI.Classes.GetClass;
 
-public class GetClassEndpoint : Endpoint<EmptyRequest, GetClassDto.Response>
+public class GetClassEndpoint : EndpointWithoutRequest<GetClassDto.Response>
 {
     public required GetClassAction GetClassAction { get; set; }
 
@@ -15,7 +15,7 @@ public class GetClassEndpoint : Endpoint<EmptyRequest, GetClassDto.Response>
         AllowAnonymous();
     }
 
-    public override async Task HandleAsync(EmptyRequest req, CancellationToken ct)
+    public override async Task HandleAsync(CancellationToken ct)
     {
         var classId = Route<Guid>("ClassId");
         var command = new GetClassCommand(classId);
