@@ -99,4 +99,30 @@ public class DiagramsDomainService : IDiagramsDomainService
 
         return attribute;
     }
+
+    public async Task<UmlMethod> AddMethodToClassAsync(
+        Guid classId,
+        UmlVisibility visibility,
+        string name,
+        string returnType,
+        ICollection<UmlMethodParameter>? parameters = null,
+        CancellationToken ct = default
+    )
+    {
+        var umlClass = await _classesRepository.GetAsync(classId, ct);
+
+        // Check if a method with the same name already exists in the class
+        if (umlClass.Methods.Any(m => m.Name == name))
+        {
+            throw new InvalidOperationException(
+                $"A method with the name '{name}' already exists in the class."
+            );
+        }
+
+        var method = UmlMethod.Create(visibility, name, returnType, parameters);
+        umlClass.AddMethod(method);
+        await _classesRepository.SaveAsync(umlClass, ct);
+
+        return method;
+    }
 }

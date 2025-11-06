@@ -53,4 +53,24 @@ public interface IDiagramsDomainService : IDomainService
         string type,
         CancellationToken ct = default
     );
+
+    /// <summary>
+    /// Adds a method to the specified class.
+    /// </summary>
+    /// <param name="classId">The ID of the class to add the method to.</param>
+    /// <param name="visibility">The visibility of the method.</param>
+    /// <param name="name">The name of the method.</param>
+    /// <param name="returnType">The return type of the method.</param>
+    /// <param name="parameters">The parameters of the method (optional).</param>
+    /// <param name="ct">Cancellation token.</param>
+    /// <returns>The created UML method.</returns>
+    /// <exception cref="InvalidOperationException">Thrown when the class does not exist or a method with the same name already exists in the class.</exception>
+    public Task<UmlMethod> AddMethodToClassAsync(
+        Guid classId,
+        UmlVisibility visibility,
+        string name,
+        string returnType,
+        ICollection<UmlMethodParameter>? parameters = null,
+        CancellationToken ct = default
+    );
 }

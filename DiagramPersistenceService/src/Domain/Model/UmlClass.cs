@@ -79,4 +79,14 @@ public class UmlClass : AggregateRootBase<Guid>
         var newAttributes = new List<UmlAttribute>(Attributes) { attribute };
         Attributes = newAttributes;
     }
+
+    /// <summary>
+    /// Adds a method to the class.
+    /// </summary>
+    /// <param name="method">The method to add.</param>
+    public void AddMethod(UmlMethod method)
+    {
+        var newMethods = new List<UmlMethod>(Methods) { method };
+        Methods = newMethods;
+    }
 }
