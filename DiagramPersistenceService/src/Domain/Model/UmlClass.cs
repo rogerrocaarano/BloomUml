@@ -69,4 +69,14 @@ public class UmlClass : AggregateRootBase<Guid>
     {
         return new UmlClass(Guid.NewGuid(), diagramId, name, position, [], []);
     }
+
+    /// <summary>
+    /// Adds an attribute to the class.
+    /// </summary>
+    /// <param name="attribute">The attribute to add.</param>
+    public void AddAttribute(UmlAttribute attribute)
+    {
+        var newAttributes = new List<UmlAttribute>(Attributes) { attribute };
+        Attributes = newAttributes;
+    }
 }

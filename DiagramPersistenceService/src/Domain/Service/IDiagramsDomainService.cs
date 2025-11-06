@@ -35,4 +35,22 @@ public interface IDiagramsDomainService : IDomainService
         UmlPosition position,
         CancellationToken ct = default
     );
+
+    /// <summary>
+    /// Adds an attribute to the specified class.
+    /// </summary>
+    /// <param name="classId">The ID of the class to add the attribute to.</param>
+    /// <param name="visibility">The visibility of the attribute.</param>
+    /// <param name="name">The name of the attribute.</param>
+    /// <param name="type">The type of the attribute.</param>
+    /// <param name="ct">Cancellation token.</param>
+    /// <returns>The created UML attribute.</returns>
+    /// <exception cref="InvalidOperationException">Thrown when the class does not exist or an attribute with the same name already exists in the class.</exception>
+    public Task<UmlAttribute> AddAttributeToClassAsync(
+        Guid classId,
+        UmlVisibility visibility,
+        string name,
+        string type,
+        CancellationToken ct = default
+    );
 }

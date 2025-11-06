@@ -73,4 +73,30 @@ public class DiagramsDomainService : IDiagramsDomainService
 
         return umlClass;
     }
+
+    public async Task<UmlAttribute> AddAttributeToClassAsync(
+        Guid classId,
+        UmlVisibility visibility,
+        string name,
+        string type,
+        CancellationToken ct = default
+    )
+    {
+        var umlClass = await _classesRepository.GetAsync(classId, ct);
+
+        // Check if an attribute with the same name already exists in the class
+        if (umlClass.Attributes.Any(a => a.Variable.Name == name))
+        {
+            throw new InvalidOperationException(
+                $"An attribute with the name '{name}' already exists in the class."
+            );
+        }
+
+        var variable = new UmlVariable(name, type);
+        var attribute = UmlAttribute.Create(visibility, variable);
+        umlClass.AddAttribute(attribute);
+        await _classesRepository.SaveAsync(umlClass, ct);
+
+        return attribute;
+    }
 }
