@@ -1,7 +1,7 @@
 using System;
 using OpenDDD.Application;
 
-namespace DiagramPersistenceServiceApi.Application.Actions.AddAttributeToClass;
+namespace DiagramPersistenceServiceApi.Application.Actions.Classes.AddAttributeToClass;
 
 public class AddAttributeToClassCommand : ICommand
 {

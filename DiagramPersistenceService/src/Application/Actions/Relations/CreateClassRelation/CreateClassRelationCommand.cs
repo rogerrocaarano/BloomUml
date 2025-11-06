@@ -1,7 +1,7 @@
 using System;
 using OpenDDD.Application;
 
-namespace DiagramPersistenceServiceApi.Application.Actions.CreateClassRelation;
+namespace DiagramPersistenceServiceApi.Application.Actions.Relations.CreateClassRelation;
 
 public class CreateClassRelationCommand : ICommand
 {

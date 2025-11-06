@@ -2,7 +2,7 @@ using DiagramPersistenceServiceApi.Domain.Model;
 using DiagramPersistenceServiceApi.Domain.Service;
 using OpenDDD.Application;
 
-namespace DiagramPersistenceServiceApi.Application.Actions.CreateDiagram;
+namespace DiagramPersistenceServiceApi.Application.Actions.Diagrams.CreateDiagram;
 
 public class CreateDiagramAction : IAction<CreateDiagramCommand, UmlDiagram>
 {

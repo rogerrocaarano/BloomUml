@@ -1,4 +1,4 @@
-using DiagramPersistenceServiceApi.Application.Actions.CreateDiagram;
+using DiagramPersistenceServiceApi.Application.Actions.Diagrams.CreateDiagram;
 using DiagramPersistenceServiceApi.Domain.Model;
 using FastEndpoints;
 

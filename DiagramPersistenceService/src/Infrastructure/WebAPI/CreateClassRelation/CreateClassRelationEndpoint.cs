@@ -1,4 +1,4 @@
-using DiagramPersistenceServiceApi.Application.Actions.CreateClassRelation;
+using DiagramPersistenceServiceApi.Application.Actions.Relations.CreateClassRelation;
 using DiagramPersistenceServiceApi.Domain.Model;
 using FastEndpoints;
 

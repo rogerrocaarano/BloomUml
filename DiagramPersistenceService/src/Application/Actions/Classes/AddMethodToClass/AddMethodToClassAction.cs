@@ -2,7 +2,7 @@ using DiagramPersistenceServiceApi.Domain.Model;
 using DiagramPersistenceServiceApi.Domain.Service;
 using OpenDDD.Application;
 
-namespace DiagramPersistenceServiceApi.Application.Actions.AddMethodToClass;
+namespace DiagramPersistenceServiceApi.Application.Actions.Classes.AddMethodToClass;
 
 public class AddMethodToClassAction : IAction<AddMethodToClassCommand, UmlMethod>
 {

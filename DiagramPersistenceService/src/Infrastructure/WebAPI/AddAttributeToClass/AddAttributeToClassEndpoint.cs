@@ -1,4 +1,4 @@
-using DiagramPersistenceServiceApi.Application.Actions.AddAttributeToClass;
+using DiagramPersistenceServiceApi.Application.Actions.Classes.AddAttributeToClass;
 using DiagramPersistenceServiceApi.Domain.Model;
 using FastEndpoints;
 

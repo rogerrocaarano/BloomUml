@@ -1,7 +1,7 @@
 using System;
 using OpenDDD.Application;
 
-namespace DiagramPersistenceServiceApi.Application.Actions.CreateDiagram;
+namespace DiagramPersistenceServiceApi.Application.Actions.Diagrams.CreateDiagram;
 
 public class CreateDiagramCommand : ICommand
 {

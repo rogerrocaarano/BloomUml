@@ -2,7 +2,7 @@ using DiagramPersistenceServiceApi.Domain.Model;
 using DiagramPersistenceServiceApi.Domain.Service;
 using OpenDDD.Application;
 
-namespace DiagramPersistenceServiceApi.Application.Actions.CreateClassRelation;
+namespace DiagramPersistenceServiceApi.Application.Actions.Relations.CreateClassRelation;
 
 public class CreateClassRelationAction : IAction<CreateClassRelationCommand, UmlClassRelation>
 {

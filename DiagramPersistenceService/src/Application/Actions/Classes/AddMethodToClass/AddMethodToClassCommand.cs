@@ -1,7 +1,7 @@
 using System;
 using OpenDDD.Application;
 
-namespace DiagramPersistenceServiceApi.Application.Actions.AddMethodToClass;
+namespace DiagramPersistenceServiceApi.Application.Actions.Classes.AddMethodToClass;
 
 public class AddMethodToClassCommand : ICommand
 {
