@@ -115,4 +115,24 @@ public interface IDiagramsDomainService : IDomainService
     /// <returns>The UML class relation.</returns>
     /// <exception cref="InvalidOperationException">Thrown when the relation does not exist.</exception>
     public Task<UmlClassRelation> GetRelationAsync(Guid relationId, CancellationToken ct = default);
+
+    /// <summary>
+    /// Gets a specific diagram by its ID.
+    /// </summary>
+    /// <param name="diagramId">The ID of the diagram to retrieve.</param>
+    /// <param name="ct">Cancellation token.</param>
+    /// <returns>The UML diagram.</returns>
+    /// <exception cref="InvalidOperationException">Thrown when the diagram does not exist.</exception>
+    public Task<UmlDiagram> GetDiagramAsync(Guid diagramId, CancellationToken ct = default);
+
+    /// <summary>
+    /// Gets all diagrams owned by a specific owner.
+    /// </summary>
+    /// <param name="ownerId">The ID of the owner.</param>
+    /// <param name="ct">Cancellation token.</param>
+    /// <returns>A collection of UML diagrams owned by the specified owner.</returns>
+    public Task<ICollection<UmlDiagram>> GetDiagramsByOwnerAsync(
+        Guid ownerId,
+        CancellationToken ct = default
+    );
 }

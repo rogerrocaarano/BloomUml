@@ -253,4 +253,18 @@ public class DiagramsDomainService : IDiagramsDomainService
     {
         return await _relationsRepository.GetAsync(relationId, ct);
     }
+
+    public async Task<UmlDiagram> GetDiagramAsync(Guid diagramId, CancellationToken ct = default)
+    {
+        return await _diagramsRepository.GetAsync(diagramId, ct);
+    }
+
+    public async Task<ICollection<UmlDiagram>> GetDiagramsByOwnerAsync(
+        Guid ownerId,
+        CancellationToken ct = default
+    )
+    {
+        var diagrams = await _diagramsRepository.FindWithAsync(d => d.OwnerId == ownerId, ct);
+        return diagrams.ToList();
+    }
 }
