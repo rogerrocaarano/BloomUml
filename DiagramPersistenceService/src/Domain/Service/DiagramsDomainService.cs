@@ -245,4 +245,12 @@ public class DiagramsDomainService : IDiagramsDomainService
     {
         return await _classesRepository.GetAsync(classId, ct);
     }
+
+    public async Task<UmlClassRelation> GetRelationAsync(
+        Guid relationId,
+        CancellationToken ct = default
+    )
+    {
+        return await _relationsRepository.GetAsync(relationId, ct);
+    }
 }

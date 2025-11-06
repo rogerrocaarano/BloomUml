@@ -106,4 +106,13 @@ public interface IDiagramsDomainService : IDomainService
     /// <returns>The UML class.</returns>
     /// <exception cref="InvalidOperationException">Thrown when the class does not exist.</exception>
     public Task<UmlClass> GetClassAsync(Guid classId, CancellationToken ct = default);
+
+    /// <summary>
+    /// Gets a specific relation by its ID.
+    /// </summary>
+    /// <param name="relationId">The ID of the relation to retrieve.</param>
+    /// <param name="ct">Cancellation token.</param>
+    /// <returns>The UML class relation.</returns>
+    /// <exception cref="InvalidOperationException">Thrown when the relation does not exist.</exception>
+    public Task<UmlClassRelation> GetRelationAsync(Guid relationId, CancellationToken ct = default);
 }
