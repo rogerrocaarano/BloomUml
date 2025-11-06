@@ -1,0 +1,114 @@
+﻿classDiagram
+  direction BT
+
+  class UmlDiagram {
+    <<AggregateRootBase>>
+    Name: string
+    Version: DiagramVersion
+  }
+  DiagramVersion --* UmlDiagram
+  UmlClass "*"--*"1" UmlDiagram
+  UmlClassRelation "*"--*"1" UmlDiagram
+
+  class UmlClass {
+    <<AggregateRootBase>>
+    DiagramId: string
+    Name: string
+    Attributes: UmlAttribute [*]
+    Methods: UmlMethod [*]
+    Position: UmlPosition
+  }
+
+  UmlAttribute --* UmlClass
+  UmlMethod --* UmlClass
+  UmlPosition --* UmlClass
+
+
+  class UmlClassRelation {
+    <<AggregateRootBase>>
+    DiagramId: string
+    Direction: UmlClassRelationDirection
+    Type: UmlClassRelationType
+    Multiplicity: UmlMultiplicity [0..1]
+  }
+  UmlClassRelation "1"--"2" UmlClass: relaciona
+
+  UmlClassRelationType --* UmlClassRelation
+  UmlMultiplicity --* UmlClassRelation
+  UmlClassRelationDirection --* UmlClassRelation
+
+  class UmlPosition {
+    <<IValueObject>>
+    X: int
+    Y: int
+  }
+
+  class UmlAttribute {
+    <<EntityBase>>
+    Visibility: UmlVisibility
+    Variable: UmlVariable
+  }
+  UmlVariable --* UmlAttribute
+  UmlVisibility --* UmlAttribute
+
+  class UmlVisibility {
+    <<IValueObject>>
+    Value: string
+    Public
+    Private
+    Protected
+    Package
+  }
+
+  class UmlVariable {
+    <<IValueObject>>
+    Name: string
+    Type: string
+  }
+
+  class UmlMethod {
+    <<EntityBase>>
+    Visibility: UmlVisibility
+    Name: string
+    ReturnType: string
+    Parameters: UmlMethodParameter [*]
+  }
+  UmlMethodParameter --* UmlMethod
+  UmlVisibility --* UmlMethod
+
+  class UmlMethodParameter {
+    <<EntityBase>>
+    Variable: UmlVariable
+  }
+  UmlVariable --* UmlMethodParameter
+
+
+  class UmlMultiplicity {
+    <<IValueObject>>
+    Origin: int
+    Destination: int
+  }
+
+  class UmlClassRelationType {
+    <<IValueObject>>
+    Type: string
+    Inheritance
+    Composition
+    Aggregation
+    Association
+    Dependency
+    Realization
+  }
+
+  class UmlClassRelationDirection {
+    <<IValueObject>>
+    FromClassId: string
+    ToClassId: string
+    Bidirectional: boolean
+  }
+
+  class DiagramVersion {
+    <<IValueObject>>
+    Version: int
+    VersioningDateTime: DateTime
+  }
