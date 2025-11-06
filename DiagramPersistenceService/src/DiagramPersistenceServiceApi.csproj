@@ -9,10 +9,4 @@
     <PackageReference Include="FastEndpoints" Version="7.1.0" />
     <PackageReference Include="FastEndpoints.Swagger" Version="7.1.0" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Infrastructure/WebAPI/" />
-    <Folder Include="Infrastructure/WebAPI/CreateDiagram/" />
-    <Folder Include="Infrastructure/WebAPI/Telemetry/" />
-    <Folder Include="Infrastructure/WebAPI/Telemetry/HeartBeat/" />
-  </ItemGroup>
 </Project>

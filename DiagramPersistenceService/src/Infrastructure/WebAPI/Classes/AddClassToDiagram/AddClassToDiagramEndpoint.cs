@@ -11,7 +11,7 @@ public class AddClassToDiagramEndpoint
 
     public override void Configure()
     {
-        Post("diagrams/{DiagramId}/classes");
+        Post("classes");
         // TODO: Add proper authentication and authorization
         AllowAnonymous();
     }

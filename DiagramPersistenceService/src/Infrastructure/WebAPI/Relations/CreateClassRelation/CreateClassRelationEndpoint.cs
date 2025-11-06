@@ -11,7 +11,7 @@ public class CreateClassRelationEndpoint
 
     public override void Configure()
     {
-        Post("diagrams/{DiagramId}/relations");
+        Post("relations");
         // TODO: Add proper authentication and authorization
         AllowAnonymous();
     }
