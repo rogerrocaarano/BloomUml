@@ -73,4 +73,28 @@ public interface IDiagramsDomainService : IDomainService
         ICollection<UmlMethodParameter>? parameters = null,
         CancellationToken ct = default
     );
+
+    /// <summary>
+    /// Creates a relation between two classes in the specified diagram.
+    /// </summary>
+    /// <param name="diagramId">The ID of the diagram to add the relation to.</param>
+    /// <param name="fromClassId">The ID of the class from which the relation originates.</param>
+    /// <param name="toClassId">The ID of the class to which the relation points.</param>
+    /// <param name="relationType">The type of the relation.</param>
+    /// <param name="bidirectional">Whether the relation is bidirectional.</param>
+    /// <param name="multiplicityOrigin">The multiplicity at the origin end (optional).</param>
+    /// <param name="multiplicityDestination">The multiplicity at the destination end (optional).</param>
+    /// <param name="ct">Cancellation token.</param>
+    /// <returns>The created UML class relation.</returns>
+    /// <exception cref="InvalidOperationException">Thrown when the diagram or classes do not exist, or when trying to create a relation between a class and itself.</exception>
+    public Task<UmlClassRelation> CreateClassRelationAsync(
+        Guid diagramId,
+        Guid fromClassId,
+        Guid toClassId,
+        UmlClassRelationType relationType,
+        bool bidirectional = false,
+        string? multiplicityOrigin = null,
+        string? multiplicityDestination = null,
+        CancellationToken ct = default
+    );
 }
