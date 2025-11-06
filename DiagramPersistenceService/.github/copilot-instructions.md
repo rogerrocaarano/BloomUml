@@ -1,80 +1,70 @@
-## Purpose
+# AI Coding Agent Instructions
 
-This file gives concise, repo-specific guidance to AI coding assistants to be
-immediately productive in the DiagramPersistenceService codebase.
+## Project Overview
 
-## High-level architecture (what to know first)
+This is a microservice that manages UML diagram persistence using Domain-Driven
+Design (DDD) principles. The service is built with .NET and follows a strict
+architectural style.
 
-- This is a small microservice for persisting UML diagrams. See
-  `docs/domain.mmd` (Mermaid) for the canonical domain model — core aggregates
-  include `UmlDiagram`, `UmlClass`, `UmlClassRelation`, and value objects like
-  `UmlPosition`.
-- The solution is split into two projects under `src/`:
-  - `Core` — domain logic following Domain-Driven Design (Aggregate Roots,
-    Entities, Value Objects). Look in `src/Core/Model` and `src/Core/Services`.
-  - `Api` — HTTP surface built with a Vertical Slice approach and FastEndpoints.
-    See `src/Api/Program.cs` and `src/Api/Api.http` for examples.
+## Key Architecture Patterns
 
-## Important conventions and rules
+### Domain-Driven Design Structure
 
-- Primary source of truth for domain shapes: `docs/domain.mmd`. Consult/update
-  it before changing domain code.
-- Core must implement domain concepts as Aggregates. External code should hold
-  references only to Aggregate Roots — follow the guidance already in
-  `AGENTS.md`.
-- API slice pattern: co-locate request/response DTOs, handlers, and mapping
-  logic per feature. Do NOT add MVC Controllers; use FastEndpoints and OpenDDD
-  patterns.
-- Do not introduce new libraries for responsibilities already covered: the repo
-  relies on OpenDDD for tactical DDD and FastEndpoints for endpoints — prefer
-  using them.
+-   Follows tactical DDD patterns using OpenDDD library
+-   Core domain objects are in `Domain/Model/`:
+    -   `UmlDiagram` is the main aggregate root
+    -   `UmlClass` and `UmlClassRelation` are child aggregates
+    -   Value objects (e.g., `UmlPosition`, `UmlVisibility`) for immutable
+        concepts
+-   Example aggregate relationships in `docs/domain.mmd` diagram
+-   Domain models MUST follow OpenDDD base types:
+    -   Use `AggregateRootBase` for aggregates
+    -   Use `EntityBase` for entities
+    -   Use `IValueObject` for value objects
 
-## Developer workflows (concrete commands)
+### API Implementation
 
-- Restore dependencies: `dotnet restore` (run at repo root).
-- Build solution: `dotnet build src/DiagramPersistenceService.sln`.
-- Run the API locally: `dotnet run --project src/Api` (Program.cs registers
-  OpenAPI in Development).
-- Use `src/Api/Api.http` for quick HTTP examples (VS Code REST Client
-  compatible).
-- Configuration: `src/Api/appsettings.json` and `appsettings.Development.json`.
-  Use `launchSettings.json` for debugger setup.
+-   Uses FastEndpoints (NOT MVC Controllers or Minimal APIs)
+-   Endpoint pattern (see `Infrastructure/WebAPI/CreateDiagram/`):
+    1. DTO for request/response (`*Dto.cs`)
+    2. Endpoint class inherits `Endpoint<TRequest, TResponse>`
+    3. Configure with `Post/Get/etc(route)` in `Configure()`
+    4. Implement logic in `HandleAsync()`
+-   Actions in `Application/Actions/` handle business logic
+    -   Command objects for input parameters
+    -   Return domain objects directly
 
-## Key files to inspect when making changes
+## Critical Conventions
 
-- Domain model and canonical shapes: `docs/domain.mmd` (Mermaid class diagram).
-- Domain code and DDD primitives: `src/Core/Model`, `src/Core/Services`, and
-  `src/Core/GlobalUsings.cs`.
-- API entry and sample endpoints: `src/Api/Program.cs`, `src/Api/Api.http`,
-  `src/Api/appsettings*.json`.
-- Solution file: `src/DiagramPersistenceService.sln`.
-- Project files: `src/Core/Core.csproj`, `src/Api/Api.csproj`.
+### Project Structure
 
-## Example patterns to follow (concrete snippets)
+```
+src/
+├── Application/        # Application services and commands
+├── Domain/            # Core domain model and interfaces
+└── Infrastructure/    # External concerns (API, persistence)
+    └── WebAPI/        # Endpoints grouped by feature
+```
 
-- Feature slice: create `src/Api/Features/<FeatureName>/` with `Request`,
-  `Response`, and handler classes, and register any DI in `Program.cs` or via
-  extension methods.
-- Domain change: if you add a new value object, update `docs/domain.mmd` and add
-  the corresponding type under `src/Core/Model` as an immutable Value Object.
+### Coding Rules
 
-## Safety and scope
+1. Keep aggregates isolated - external code should only reference aggregate
+   roots
+2. Use domain diagram (`docs/domain.mmd`) as source of truth for model
+   relationships
+3. In-memory repositories for now (see `Infrastructure/Repositories/`)
 
-- Make minimal, localized changes. Prefer adding new feature slices over
-  changing global wiring.
-- If a change requires a new dependency, document why OpenDDD/FastEndpoints
-  can't be used and get approval.
+### Workflow Tips
 
-## What to ask the human
+1. Start with domain diagram when adding features
+2. Create endpoint following FastEndpoints pattern
+3. Implement domain logic in Action class
+4. Add repository methods as needed
 
-- If the domain model in `docs/domain.mmd` differs from code, ask which is
-  authoritative before making changes.
-- If adding persistence or external infra (DB, blob storage), ask where
-  secrets/config should live and whether to extend the existing appsettings
-  pattern.
+## Integration Points
 
----
-
-If any part of this guidance is unclear or you want more examples (e.g., a
-sample FastEndpoint slice using OpenDDD types), tell me which area and I'll
-expand with concrete code examples.
+-   Repositories (current: in-memory, future: persistent)
+    -   `IUmlDiagramsRepository`
+    -   `IUmlClassesRepository`
+    -   `IUmlClassRelationsRepository`
+-   Authentication/Authorization (TODO - currently AllowAnonymous)
