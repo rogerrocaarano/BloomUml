@@ -240,4 +240,9 @@ public class DiagramsDomainService : IDiagramsDomainService
         diagram.UpdateRelations(newRelationsIds);
         await _diagramsRepository.SaveAsync(diagram, ct);
     }
+
+    public async Task<UmlClass> GetClassAsync(Guid classId, CancellationToken ct = default)
+    {
+        return await _classesRepository.GetAsync(classId, ct);
+    }
 }

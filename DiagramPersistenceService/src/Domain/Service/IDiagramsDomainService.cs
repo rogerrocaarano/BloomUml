@@ -97,4 +97,13 @@ public interface IDiagramsDomainService : IDomainService
         string? multiplicityDestination = null,
         CancellationToken ct = default
     );
+
+    /// <summary>
+    /// Gets a specific class by its ID.
+    /// </summary>
+    /// <param name="classId">The ID of the class to retrieve.</param>
+    /// <param name="ct">Cancellation token.</param>
+    /// <returns>The UML class.</returns>
+    /// <exception cref="InvalidOperationException">Thrown when the class does not exist.</exception>
+    public Task<UmlClass> GetClassAsync(Guid classId, CancellationToken ct = default);
 }
