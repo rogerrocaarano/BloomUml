@@ -1,4 +1,4 @@
-namespace DiagramPersistenceServiceApi.Infrastructure.WebAPI.CreateDiagram;
+namespace DiagramPersistenceServiceApi.Infrastructure.WebAPI.Diagrams.CreateDiagram;
 
 public abstract class CreateDiagramDto
 {

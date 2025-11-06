@@ -2,7 +2,7 @@ using DiagramPersistenceServiceApi.Application.Actions.Diagrams.CreateDiagram;
 using DiagramPersistenceServiceApi.Domain.Model;
 using FastEndpoints;
 
-namespace DiagramPersistenceServiceApi.Infrastructure.WebAPI.CreateDiagram;
+namespace DiagramPersistenceServiceApi.Infrastructure.WebAPI.Diagrams.CreateDiagram;
 
 public class CreateDiagramEndpoint : Endpoint<CreateDiagramDto.Request, CreateDiagramDto.Response>
 {

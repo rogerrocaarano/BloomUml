@@ -2,7 +2,7 @@ using DiagramPersistenceServiceApi.Application.Actions.Relations.CreateClassRela
 using DiagramPersistenceServiceApi.Domain.Model;
 using FastEndpoints;
 
-namespace DiagramPersistenceServiceApi.Infrastructure.WebAPI.CreateClassRelation;
+namespace DiagramPersistenceServiceApi.Infrastructure.WebAPI.Relations.CreateClassRelation;
 
 public class CreateClassRelationEndpoint
     : Endpoint<CreateClassRelationDto.Request, CreateClassRelationDto.Response>

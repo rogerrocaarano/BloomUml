@@ -1,4 +1,4 @@
-namespace DiagramPersistenceServiceApi.Infrastructure.WebAPI.CreateClassRelation;
+namespace DiagramPersistenceServiceApi.Infrastructure.WebAPI.Relations.CreateClassRelation;
 
 public abstract class CreateClassRelationDto
 {

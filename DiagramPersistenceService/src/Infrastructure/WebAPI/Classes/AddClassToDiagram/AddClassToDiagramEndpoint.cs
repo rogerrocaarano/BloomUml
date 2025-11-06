@@ -2,7 +2,7 @@ using DiagramPersistenceServiceApi.Application.Actions.Classes.AddClassToDiagram
 using DiagramPersistenceServiceApi.Domain.Model;
 using FastEndpoints;
 
-namespace DiagramPersistenceServiceApi.Infrastructure.WebAPI.AddClassToDiagram;
+namespace DiagramPersistenceServiceApi.Infrastructure.WebAPI.Classes.AddClassToDiagram;
 
 public class AddClassToDiagramEndpoint
     : Endpoint<AddClassToDiagramDto.Request, AddClassToDiagramDto.Response>

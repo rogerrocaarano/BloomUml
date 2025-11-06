@@ -1,4 +1,4 @@
-namespace DiagramPersistenceServiceApi.Infrastructure.WebAPI.AddClassToDiagram;
+namespace DiagramPersistenceServiceApi.Infrastructure.WebAPI.Classes.AddClassToDiagram;
 
 public abstract class AddClassToDiagramDto
 {

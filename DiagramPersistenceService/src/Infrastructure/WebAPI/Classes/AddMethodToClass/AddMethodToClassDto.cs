@@ -1,4 +1,4 @@
-namespace DiagramPersistenceServiceApi.Infrastructure.WebAPI.AddMethodToClass;
+namespace DiagramPersistenceServiceApi.Infrastructure.WebAPI.Classes.AddMethodToClass;
 
 public abstract class AddMethodToClassDto
 {
