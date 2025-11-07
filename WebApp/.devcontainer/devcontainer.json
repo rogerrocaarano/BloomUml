@@ -1,0 +1,30 @@
+{
+    "dockerComposeFile": ["docker-compose.yaml"],
+    "name": "Angular",
+    "service": "devcontainer",
+    "workspaceFolder": "/workspace/WebApp",
+    "features": {
+        "ghcr.io/devcontainers/features/node:1": {
+            "version": "24"
+        },
+        "ghcr.io/devcontainers-extra/features/angular-cli:2": {
+            "version": "20"
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "angular.ng-template",
+                "segerdekort.angular-cli",
+                "johnpapa.angular2",
+                "MermaidChart.vscode-mermaid-chart",
+                "esbenp.prettier-vscode"
+            ],
+            "settings": {
+                "csharp.preview.improvedLaunchExperience": false,
+                "editor.defaultFormatter": "esbenp.prettier-vscode",
+                "editor.formatOnSave": true
+            }
+        }
+    }
+}
