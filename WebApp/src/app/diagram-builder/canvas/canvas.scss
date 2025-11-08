@@ -1,9 +1,21 @@
 :host {
     display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+
+#diagram-container {
+    display: flex;
+    flex: 1;
     flex-direction: column;
     height: 100vh;
 }
 
 #diagram {
     flex: 1;
+}
+
+app-canvas-class-editor {
+    min-width: 25rem;
+    width: 30rem;
 }
