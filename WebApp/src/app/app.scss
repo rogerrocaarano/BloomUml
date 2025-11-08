@@ -3,3 +3,8 @@
 @import "../../node_modules/@syncfusion/ej2-popups/styles/material.css";
 @import "../../node_modules/@syncfusion/ej2-splitbuttons/styles/material.css";
 @import "../../node_modules/@syncfusion/ej2-navigations/styles/material.css";
+
+:host {
+    display: block;
+    width: 100%;
+}
