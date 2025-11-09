@@ -1,1 +1,21 @@
-<p>canvas-class-editor works!</p>
+<app-class-name-field></app-class-name-field>
+
+<mat-toolbar>
+    <span>Atributos</span>
+    <span class="toolbar-spacer"></span>
+    <button matButton="filled" (click)="addAttribute()">Añadir Atributo</button>
+</mat-toolbar>
+
+@for (attribute of attributes(); track attribute) {
+<app-attribute-field></app-attribute-field>
+}
+
+<mat-toolbar>
+    <span>Métodos</span>
+    <span class="toolbar-spacer"></span>
+    <button matButton="filled" (click)="addMethod()">Añadir Método</button>
+</mat-toolbar>
+
+@for (method of methods(); track method) {
+<app-method-field></app-method-field>
+}

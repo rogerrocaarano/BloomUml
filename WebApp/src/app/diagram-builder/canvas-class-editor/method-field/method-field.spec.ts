@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { CanvasClassEditor } from "./canvas-class-editor";
+import { MethodField } from "./method-field";
 
-describe("CanvasClassEditor", () => {
-    let component: CanvasClassEditor;
-    let fixture: ComponentFixture<CanvasClassEditor>;
+describe("MethodField", () => {
+    let component: MethodField;
+    let fixture: ComponentFixture<MethodField>;
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [CanvasClassEditor],
+            imports: [MethodField],
         }).compileComponents();
 
-        fixture = TestBed.createComponent(CanvasClassEditor);
+        fixture = TestBed.createComponent(MethodField);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });
