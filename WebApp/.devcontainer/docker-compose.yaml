@@ -5,3 +5,5 @@ services:
             - ../../.:/workspace:cached
             - ~/.ssh:/home/vscode/.ssh:ro
         command: sleep infinity
+        env_file:
+            - ./syncfusion-license.env
