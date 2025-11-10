@@ -7,3 +7,10 @@ services:
         command: sleep infinity
         env_file:
             - ./syncfusion-license.env
+
+    diagram-persistence-service:
+        build:
+            context: ../../DiagramPersistenceService
+            dockerfile: Dockerfile
+        ports:
+            - "8081:8080"
