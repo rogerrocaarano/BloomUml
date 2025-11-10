@@ -1,4 +1,4 @@
-<app-class-name-field></app-class-name-field>
+<class-editor-name-field></class-editor-name-field>
 
 <mat-toolbar>
     <span>Atributos</span>
@@ -7,7 +7,7 @@
 </mat-toolbar>
 
 @for (attribute of attributes(); track attribute) {
-<app-attribute-field></app-attribute-field>
+<class-editor-attribute-field></class-editor-attribute-field>
 }
 
 <mat-toolbar>
@@ -17,5 +17,5 @@
 </mat-toolbar>
 
 @for (method of methods(); track method) {
-<app-method-field></app-method-field>
+<class-editor-method-field></class-editor-method-field>
 }

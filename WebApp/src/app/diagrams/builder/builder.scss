@@ -1,0 +1,13 @@
+:host {
+    display: flex;
+    flex-direction: row;
+}
+
+builder-canvas {
+    flex: 1;
+}
+
+builder-class-editor {
+    min-width: 25rem;
+    width: 30rem;
+}

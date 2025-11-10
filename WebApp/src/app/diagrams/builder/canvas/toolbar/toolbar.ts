@@ -3,9 +3,9 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatToolbar } from "@angular/material/toolbar";
 
 @Component({
-    selector: "app-canvas-toolbar",
+    selector: "canvas-toolbar",
     imports: [MatButtonModule, MatToolbar],
-    templateUrl: "./canvas-toolbar.html",
-    styleUrl: "./canvas-toolbar.scss",
+    templateUrl: "./toolbar.html",
+    styleUrl: "./toolbar.scss",
 })
-export class CanvasToolbar {}
+export class Toolbar {}

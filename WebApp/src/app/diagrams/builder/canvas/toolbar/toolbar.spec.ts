@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { ClassNameField } from "./class-name-field";
+import { Toolbar as Toolbar } from "./toolbar";
 
-describe("ClassNameField", () => {
-    let component: ClassNameField;
-    let fixture: ComponentFixture<ClassNameField>;
+describe("Toolbar", () => {
+    let component: Toolbar;
+    let fixture: ComponentFixture<Toolbar>;
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [ClassNameField],
+            imports: [Toolbar],
         }).compileComponents();
 
-        fixture = TestBed.createComponent(ClassNameField);
+        fixture = TestBed.createComponent(Toolbar);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

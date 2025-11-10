@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 
 @Component({
-    selector: "app-method-field",
+    selector: "class-editor-method-field",
     imports: [],
     templateUrl: "./method-field.html",
     styleUrl: "./method-field.scss",

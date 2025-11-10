@@ -1,23 +1,17 @@
 import { Component, signal } from "@angular/core";
-import { ClassNameField } from "./class-name-field/class-name-field";
+import { NameField } from "./name-field/name-field";
 import { AttributeField } from "./attribute-field/attribute-field";
 import { MethodField } from "./method-field/method-field";
 import { MatToolbar } from "@angular/material/toolbar";
 import { MatAnchor } from "@angular/material/button";
 
 @Component({
-    selector: "app-canvas-class-editor",
-    imports: [
-        ClassNameField,
-        AttributeField,
-        MethodField,
-        MatToolbar,
-        MatAnchor,
-    ],
-    templateUrl: "./canvas-class-editor.html",
-    styleUrl: "./canvas-class-editor.scss",
+    selector: "builder-class-editor",
+    imports: [NameField, AttributeField, MethodField, MatToolbar, MatAnchor],
+    templateUrl: "./class-editor.html",
+    styleUrl: "./class-editor.scss",
 })
-export class CanvasClassEditor {
+export class ClassEditor {
     protected attributes = signal<number[]>([]);
     protected methods = signal<number[]>([]);
 
